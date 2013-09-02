@@ -12,7 +12,7 @@ is altered.
 3. Run `chmod +x /path/to/task-git/task-git.sh`.
 4. Use `task` as normal; when run, the Taskwarrior database files will be committed to version control.
 
-It is recommended to use the Taskwarrior database only on one machine, as you will be resolving conflicts if using one multiple machines.
+It is recommended to use the Taskwarrior database only on one machine, as you will be resolving conflicts if using the same task database on multiple machines.
 
 ## License
 

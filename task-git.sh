@@ -10,17 +10,17 @@ if [ ! -d "$DATA_DIR" ]; then
   echo 'Could not load data directory!'
   exit 1
 fi
-# The backup directory is stored alongside the existing data directory.
-BACKUP_DIR="${DATA_DIR}.bak"
+
 # Create backups
-DATA_DIR_FILES="${DATA_DIR}/*"
-mkdir -p $BACKUP_DIR
-cp -R $DATA_DIR_FILES "${BACKUP_DIR}/"
-cd $BACKUP_DIR
-git add .
-git commit -m "$TASK_COMMAND" > /dev/null
 /usr/bin/task $@
-cp -R $DATA_DIR_FILES "${BACKUP_DIR}/"
+cd $DATA_DIR
 git add .
 git commit -m "$TASK_COMMAND" > /dev/null
+# Check if --task-git-push is passed as an argument.
+for i
+do
+  if [ "$i" == "--task-git-push" ]; then
+    git push origin master
+  fi
+done
 exit 0

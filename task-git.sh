@@ -3,9 +3,9 @@
 # Get task command
 TASK_COMMAND="task ${@}"
 # Get data dir
-DATA_RC=$(task _show | grep data.location)
+DATA_RC=$(/usr/bin/task _show | grep data.location)
 DATA=(${DATA_RC//=/ })
-DATA_DIR=${DATA[1]}
+DATA_DIR=$(eval echo ${DATA[1]})
 if [ ! -d "$DATA_DIR" ]; then
   echo 'Could not load data directory!'
   exit 1
